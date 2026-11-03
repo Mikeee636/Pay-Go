@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Transaksi - Pay & Go</title>
+  <!-- Google Fonts: Poppins (Heading) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dashboard-body">
+  
+  <!-- Dashboard Layout Wrapper -->
+  <div class="dashboard-wrapper">
+    
+    <!-- Sidebar Navigation (Green Theme for Admin) -->
+    <aside class="sidebar admin-sidebar">
+      <div class="sidebar-header">
+        <div class="logo-container">
+          <!-- White SVG Logo variant -->
+          <svg class="logo-icon logo-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="20" y="30" width="60" height="50" rx="12" fill="#ffffff" />
+            <path d="M35,30 C35,18 40,12 50,12 C60,12 65,18 65,30" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
+            <circle cx="50" cy="55" r="10" fill="var(--primary-color)" />
+            <path d="M47,55 L52,60 L60,49" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text text-white">Pay <span class="logo-text-accent text-white-accent">&amp; Go</span></span>
+        </div>
+      </div>
+
+      <!-- Active Admin Profile Card -->
+      <div class="user-profile-card admin-profile-card">
+        <div class="user-avatar admin-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="user-info">
+          <span class="user-name text-white" id="adminName">Admin</span>
+          <span class="user-role text-white-muted">Administrator</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu Items -->
+      <nav class="sidebar-menu admin-menu">
+        <a href="admin.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+          Ringkasan Dashboard
+        </a>
+        <a href="admin_products.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          Kelola Produk
+        </a>
+        <a href="admin_categories.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          Kelola Kategori
+        </a>
+        <a href="admin_stock.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+            <polygon points="12 22.08 12 12 3 6.92 3 17.08 12 22.08"></polygon>
+            <polygon points="12 22.08 21 17.08 21 6.92 12 12 12 22.08"></polygon>
+            <polygon points="12 12 21 6.92 12 1.84 3 6.92 12 12"></polygon>
+          </svg>
+          Kelola Stok
+        </a>
+        <a href="admin_employees.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          Kelola Karyawan
+        </a>
+        <a href="admin_transactions.html" class="menu-item active">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          Laporan Transaksi
+        </a>
+        <a href="admin_sales.html" class="menu-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12" y2="6"></line>
+            <line x1="6" y1="18" x2="6" y2="12"></line>
+            <line x1="18" y1="18" x2="18" y2="9"></line>
+          </svg>
+          Laporan Penjualan
+        </a>
+        <div class="menu-divider admin-divider"></div>
+        <a href="index.html" class="menu-item logout admin-logout" id="logoutBtn">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          Keluar
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>Laporan Riwayat Transaksi</h1>
+          <p class="subtitle">Lihat semua catatan invoice penjualan, rincian produk, dan analisis total keuangan</p>
+        </div>
+        <div class="topbar-right">
+          <div class="time-tracker">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="time-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="liveClock">Senin, 3 Agustus 2026 | 16:05:00</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Transaction Management Desk -->
+      <div class="admin-workspace">
+
+        <!-- Top Small Stats Cards Grid -->
+        <section class="stats-grid-small">
+          
+          <div class="stats-card-small">
+            <div class="card-left">
+              <span class="card-title">Total Pendapatan</span>
+              <h3 id="totalRevenue" class="card-value">Rp 0</h3>
+            </div>
+            <div class="card-icon revenue">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="stats-card-small">
+            <div class="card-left">
+              <span class="card-title">Total PPN (11%)</span>
+              <h3 id="totalTax" class="card-value">Rp 0</h3>
+            </div>
+            <div class="card-icon tax">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="stats-card-small">
+            <div class="card-left">
+              <span class="card-title">Transaksi Selesai</span>
+              <h3 id="totalTrx" class="card-value">0</h3>
+            </div>
+            <div class="card-icon count">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="stats-card-small">
+            <div class="card-left">
+              <span class="card-title">Rata-rata Keranjang</span>
+              <h3 id="avgCart" class="card-value">Rp 0</h3>
+            </div>
+            <div class="card-icon average">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+              </svg>
+            </div>
+          </div>
+
+        </section>
+        
+        <!-- Controls Bar with Search and Date Range Filters -->
+        <div class="crud-controls-bar transactions-bar">
+          
+          <!-- Search box input -->
+          <div class="input-wrapper search-box-wrapper" style="flex: 1; max-width: 400px;">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="searchQuery" 
+              placeholder="Cari invoice ID atau kasir..."
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- Date Filters -->
+          <div class="date-filter-group">
+            <div class="date-input-wrapper">
+              <label for="startDate">Mulai</label>
+              <input type="date" id="startDate" name="startDate">
+            </div>
+            <div class="date-input-wrapper">
+              <label for="endDate">Selesai</label>
+              <input type="date" id="endDate" name="endDate">
+            </div>
+            <button class="action-btn delete-btn reset-date-btn" id="resetDateBtn" style="background-color: #a0aec0; box-shadow: none; font-size: 0.75rem; padding: 0.4rem 0.75rem;">
+              Reset Tanggal
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Transactions List Table Card -->
+        <section class="admin-card product-table-card">
+          <div class="table-container">
+            <table class="cart-table zebra-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">No</th>
+                  <th style="width: 200px; text-align: center;">Tanggal &amp; Waktu</th>
+                  <th style="width: 200px; text-align: center;">Invoice ID</th>
+                  <th>Nama Kasir</th>
+                  <th style="width: 200px; text-align: right; padding-right: 1.5rem;">Total Transaksi</th>
+                  <th style="width: 140px; text-align: center;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="transactionTableBody">
+                <!-- Dynamically populated transaction rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Modal Detail Transaksi: Digital Struk Receipt popup -->
+  <div class="modal-overlay hidden" id="transactionDetailModal" aria-modal="true" role="dialog">
+    <div class="crud-modal-container" style="max-width: 420px; padding: 1rem;">
+      <div class="crud-modal-card" style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-modal);">
+        
+        <div class="crud-modal-header" style="background-color: var(--primary-color); padding: 1rem 1.25rem;">
+          <h2 style="color: #ffffff; font-size: 1.1rem; font-weight: 600;">Detail Pembayaran</h2>
+          <button type="button" class="close-modal-x" id="closeDetailModalXBtn" style="color: #ffffff; opacity: 0.8;">&times;</button>
+        </div>
+
+        <div class="modal-receipt-paper" style="padding: 1.25rem; background-color: #ffffff; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #000000;">
+          
+          <!-- Struk Header -->
+          <div style="text-align: center; margin-bottom: 1rem; border-bottom: 1px dashed #d1d5db; padding-bottom: 1rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0 0 0.25rem 0;">PAY &amp; GO</h3>
+            <p style="margin: 0; font-size: 0.75rem; color: #4b5563; font-family: var(--font-body);">FreshMarket Supermarket</p>
+          </div>
+
+          <!-- Struk Meta -->
+          <div style="margin-bottom: 1rem; border-bottom: 1px dashed #d1d5db; padding-bottom: 0.75rem; line-height: 1.4;">
+            <div>NO: <span id="detailTrxId" style="font-weight: 700;">TRX-00000</span></div>
+            <div>TGL: <span id="detailDate">01/01/2026 12:00</span></div>
+            <div>KASIR: <span id="detailCashier">Kasir</span></div>
+          </div>
+
+          <!-- Struk Items -->
+          <div id="detailItemsBody" style="margin-bottom: 1rem; border-bottom: 1px dashed #d1d5db; padding-bottom: 0.75rem;">
+            <!-- Dynamically populated detail item rows -->
+          </div>
+
+          <!-- Struk Sums -->
+          <div style="line-height: 1.5; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>Subtotal:</span>
+              <span id="detailSubtotal">Rp 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>PPN (11%):</span>
+              <span id="detailTax">Rp 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.05rem; border-top: 1px solid #000; padding-top: 0.25rem; margin-top: 0.25rem;">
+              <span>TOTAL:</span>
+              <span id="detailTotal">Rp 0</span>
+            </div>
+          </div>
+
+          <!-- Footer msg -->
+          <div style="text-align: center; margin-top: 1rem; font-size: 0.75rem; color: #4b5563; font-family: var(--font-body);">
+            Terima kasih atas kunjungan Anda
+          </div>
+
+        </div>
+
+        <div class="crud-modal-actions" style="padding: 0.75rem 1.25rem; background-color: var(--bg-main); border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end;">
+          <button type="button" class="cancel-modal-btn" id="closeDetailModalBtn" style="padding: 0.45rem 1rem;">Tutup</button>
+          <button type="button" class="save-modal-btn" id="printDetailBtn" style="background-color: var(--primary-color); padding: 0.45rem 1.25rem;">Cetak Struk</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Verification & Transaction History Logic -->
+  <script src="admin_transactions.js"></script>
+</body>
+</html>

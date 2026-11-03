@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kasir - Pay & Go</title>
+  <!-- Google Fonts: Poppins (Heading) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dashboard-body">
+  
+  <!-- Dashboard Layout Wrapper -->
+  <div class="dashboard-wrapper">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-container">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="greenGradSidebar" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2ecc71" />
+                <stop offset="100%" stop-color="#27ae60" />
+              </linearGradient>
+            </defs>
+            <rect x="20" y="30" width="60" height="50" rx="12" fill="url(#greenGradSidebar)" />
+            <path d="M35,30 C35,18 40,12 50,12 C60,12 65,18 65,30" fill="none" stroke="url(#greenGradSidebar)" stroke-width="8" stroke-linecap="round" />
+            <circle cx="50" cy="55" r="10" fill="#ffffff" />
+            <path d="M47,55 L52,60 L60,49" fill="none" stroke="#27ae60" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text">Pay <span class="logo-text-accent">&amp; Go</span></span>
+        </div>
+      </div>
+
+      <!-- Active User Profile Card -->
+      <div class="user-profile-card">
+        <div class="user-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="user-info">
+          <span class="user-name" id="cashierName">Budi Santoso</span>
+          <span class="user-role">Kasir (Karyawan)</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu Items -->
+      <nav class="sidebar-menu">
+        <a href="cashier.html" class="menu-item active">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <line x1="12" y1="4" x2="12" y2="20"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+          </svg>
+          Transaksi Kasir
+        </a>
+        <a href="#" class="menu-item disabled-link" onclick="event.preventDefault(); alert('Modul Riwayat Transaksi sedang dalam pengembangan.');">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Riwayat Transaksi
+        </a>
+        <div class="menu-divider"></div>
+        <a href="index.html" class="menu-item logout">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          Keluar
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>Transaksi Baru</h1>
+          <p class="subtitle">Kelola kasir FreshMarket dengan cepat &amp; aman</p>
+        </div>
+        <div class="topbar-right">
+          <!-- Live Date and Time Tracker -->
+          <div class="time-tracker">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="time-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="liveClock">Senin, 3 Agustus 2026 | 16:05:00</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cashier Workspace Grid -->
+      <div class="cashier-grid">
+        
+        <!-- Left Side: Barcode Scanner, Search, and Cart Table (65%) -->
+        <section class="workspace-main">
+          
+          <!-- Barcode Area (Top Position for easy access) -->
+          <div class="workspace-card scanner-area">
+            <label for="barcodeInput" class="scanner-label">Scan Barcode Produk</label>
+            <div class="input-wrapper">
+              <!-- Barcode Icon -->
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 5v14M6 5v14M10 5v14M13 5v14M17 5v14M21 5v14"></path>
+              </svg>
+              <input 
+                type="text" 
+                id="barcodeInput" 
+                placeholder="Tekan barcode scanner atau ketik Kode Produk (misal: 8991001) lalu tekan Enter"
+                autofocus
+                autocomplete="off"
+              >
+            </div>
+            <span class="scanner-tip">Tip: Fokus kursor akan otomatis kembali ke kolom ini setiap kali menambahkan produk.</span>
+          </div>
+
+          <!-- Product Search Area (Right below barcode) -->
+          <div class="workspace-card search-area">
+            <label for="searchInput" class="search-label">Cari Produk Manual</label>
+            <div class="input-wrapper">
+              <!-- Search Icon -->
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Ketik nama produk atau kode produk di sini..."
+                autocomplete="off"
+              >
+              
+              <!-- Autocomplete suggestions dropdown -->
+              <div class="search-suggestions-dropdown hidden" id="searchSuggestions">
+                <!-- Dynamic suggestions go here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Shopping Cart Table Card -->
+          <div class="workspace-card cart-card">
+            <div class="card-header-row">
+              <h2>Keranjang Belanja</h2>
+              <span class="item-count-badge" id="itemCount">0 Item</span>
+            </div>
+            
+            <div class="table-container">
+              <table class="cart-table">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">No</th>
+                    <th>Nama Produk</th>
+                    <th style="width: 120px;">Kode</th>
+                    <th style="width: 140px; text-align: right;">Harga Satuan</th>
+                    <th style="width: 130px; text-align: center;">Qty</th>
+                    <th style="width: 150px; text-align: right;">Total</th>
+                    <th style="width: 80px; text-align: center;">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="cartBody">
+                  <!-- Empty Cart State Placeholder -->
+                  <tr id="emptyCartRow">
+                    <td colspan="7" class="empty-cart-cell">
+                      <div class="empty-state-content">
+                        <svg class="empty-cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="9" cy="21" r="1"></circle>
+                          <circle cx="20" cy="21" r="1"></circle>
+                          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <p>Keranjang belanja kosong</p>
+                        <span>Scan barcode produk di atas atau cari produk secara manual untuk menambahkan item belanja.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Right Side: Checkout Payment Panel (35% - Prominent Card) -->
+        <aside class="workspace-checkout">
+          <div class="checkout-card">
+            <div class="checkout-header">
+              <h2>Ringkasan Transaksi</h2>
+            </div>
+            
+            <!-- Grand Total Display (High Contrast, Bold, Green Theme) -->
+            <div class="grand-total-container">
+              <span class="total-label">TOTAL PEMBAYARAN</span>
+              <span class="total-value" id="grandTotalDisplay">Rp 0</span>
+            </div>
+
+            <!-- Detailed Prices Subtotal and Tax -->
+            <div class="payment-breakdown">
+              <div class="breakdown-row">
+                <span>Subtotal</span>
+                <span id="subtotalDisplay">Rp 0</span>
+              </div>
+              <div class="breakdown-row">
+                <span>PPN (11%)</span>
+                <span id="taxDisplay">Rp 0</span>
+              </div>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <!-- Payment Method Form -->
+            <div class="payment-method-section">
+              <h3>Metode Pembayaran</h3>
+              <div class="payment-methods-grid">
+                <label class="method-option">
+                  <input type="radio" name="paymentMethod" value="TUNAI" checked>
+                  <span class="method-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <path d="M6 12h.01M18 12h.01"></path>
+                    </svg>
+                    Tunai
+                  </span>
+                </label>
+                <label class="method-option">
+                  <input type="radio" name="paymentMethod" value="DEBIT">
+                  <span class="method-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                      <line x1="2" y1="10" x2="22" y2="10"></line>
+                    </svg>
+                    Debit Card
+                  </span>
+                </label>
+                <label class="method-option">
+                  <input type="radio" name="paymentMethod" value="QRIS">
+                  <span class="method-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                      <rect x="7" y="7" width="3" height="3"></rect>
+                      <rect x="14" y="7" width="3" height="3"></rect>
+                      <rect x="7" y="14" width="3" height="3"></rect>
+                    </svg>
+                    QRIS
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Cash Payment Details (Visible only when Tunai is active) -->
+            <div class="cash-payment-fields" id="cashFields">
+              <div class="input-group">
+                <label for="cashInput">Uang Diterima (Rp)</label>
+                <div class="input-wrapper">
+                  <input 
+                    type="text" 
+                    id="cashInput" 
+                    placeholder="Masukkan nominal uang tunai..."
+                    autocomplete="off"
+                  >
+                </div>
+              </div>
+              
+              <!-- Cash Suggestions Buttons -->
+              <div class="quick-cash-row">
+                <button type="button" class="quick-cash-btn" data-value="pas">Uang Pas</button>
+                <button type="button" class="quick-cash-btn" data-value="10000">10k</button>
+                <button type="button" class="quick-cash-btn" data-value="20000">20k</button>
+                <button type="button" class="quick-cash-btn" data-value="50000">50k</button>
+                <button type="button" class="quick-cash-btn" data-value="100000">100k</button>
+              </div>
+
+              <div class="breakdown-row change-row">
+                <span>Kembalian</span>
+                <span class="change-value" id="changeDisplay">Rp 0</span>
+              </div>
+            </div>
+
+            <!-- Checkout Buttons -->
+            <div class="checkout-actions">
+              <button class="pay-btn" id="payBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pay-btn-icon">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Bayar Sekarang
+              </button>
+              
+              <button class="cancel-btn" id="cancelBtn">
+                Batalkan Belanja
+              </button>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Thermal Receipt Modal Overlay (Hidden by Default) -->
+  <div class="modal-overlay hidden" id="receiptModal" aria-modal="true" role="dialog">
+    <div class="receipt-modal-container">
+      
+      <!-- Thermal Paper Receipt Container -->
+      <div class="receipt-paper" id="receiptPaper">
+        
+        <!-- Store Header Info -->
+        <div class="receipt-header">
+          <!-- Inline SVG Logo: Green Shopping Bag / Wallet hybrid with a tick mark -->
+          <svg class="receipt-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="greenGradReceipt" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2ecc71" />
+                <stop offset="100%" stop-color="#27ae60" />
+              </linearGradient>
+            </defs>
+            <rect x="20" y="30" width="60" height="50" rx="12" fill="url(#greenGradReceipt)" />
+            <path d="M35,30 C35,18 40,12 50,12 C60,12 65,18 65,30" fill="none" stroke="url(#greenGradReceipt)" stroke-width="8" stroke-linecap="round" />
+            <circle cx="50" cy="55" r="10" fill="#ffffff" />
+            <path d="M47,55 L52,60 L60,49" fill="none" stroke="#27ae60" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2>PAY &amp; GO FreshMarket</h2>
+          <p class="receipt-address">Jl. Kebun Raya No. 42, Bogor, Jawa Barat</p>
+          <p class="receipt-phone">Telp: 0251-123456</p>
+        </div>
+
+        <div class="receipt-divider-dashed"></div>
+
+        <!-- Meta Info -->
+        <div class="receipt-meta">
+          <div class="meta-row">
+            <span>No. Struk:</span>
+            <span id="receiptNumber">TRX-20260803-0001</span>
+          </div>
+          <div class="meta-row">
+            <span>Tanggal:</span>
+            <span id="receiptDate">03/08/2026 16:05</span>
+          </div>
+          <div class="meta-row">
+            <span>Kasir:</span>
+            <span id="receiptCashier">Budi Santoso</span>
+          </div>
+        </div>
+
+        <div class="receipt-divider-dashed"></div>
+
+        <!-- Items Table List -->
+        <div class="receipt-items" id="receiptItemsBody">
+          <!-- Dynamic Items List -->
+          <div class="receipt-item-row">
+            <span class="item-name">Kopi Susu Gula Aren</span>
+            <div class="item-calc-row">
+              <span>2 x Rp 18.000</span>
+              <span>Rp 36.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="receipt-divider-dashed"></div>
+
+        <!-- Pricing Totals -->
+        <div class="receipt-totals">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="receiptSubtotal">Rp 0</span>
+          </div>
+          <div class="total-row">
+            <span>PPN (11%):</span>
+            <span id="receiptTax">Rp 0</span>
+          </div>
+          <div class="total-row grand">
+            <span>TOTAL:</span>
+            <span id="receiptGrandTotal">Rp 0</span>
+          </div>
+          
+          <div class="receipt-divider-dotted"></div>
+          
+          <div class="total-row">
+            <span>Metode:</span>
+            <span id="receiptMethod">Tunai</span>
+          </div>
+          <div class="total-row" id="receiptCashRow">
+            <span>Bayar:</span>
+            <span id="receiptCashPaid">Rp 0</span>
+          </div>
+          <div class="total-row" id="receiptChangeRow">
+            <span>Kembalian:</span>
+            <span id="receiptChange">Rp 0</span>
+          </div>
+        </div>
+
+        <div class="receipt-divider-dashed"></div>
+
+        <!-- Thank you Footer -->
+        <div class="receipt-footer">
+          <p>Terima Kasih atas Kunjungan Anda</p>
+          <p>Barang yang sudah dibeli</p>
+          <p>tidak dapat ditukar/dikembalikan</p>
+          
+          <!-- Barcode Simulation SVG -->
+          <div class="receipt-barcode-wrapper">
+            <svg class="receipt-barcode-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
+              <rect x="5" y="2" width="2" height="20" fill="#000"></rect>
+              <rect x="9" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="12" y="2" width="4" height="20" fill="#000"></rect>
+              <rect x="18" y="2" width="2" height="20" fill="#000"></rect>
+              <rect x="22" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="25" y="2" width="3" height="20" fill="#000"></rect>
+              <rect x="30" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="33" y="2" width="4" height="20" fill="#000"></rect>
+              <rect x="39" y="2" width="2" height="20" fill="#000"></rect>
+              <rect x="43" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="46" y="2" width="3" height="20" fill="#000"></rect>
+              <rect x="51" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="54" y="2" width="4" height="20" fill="#000"></rect>
+              <rect x="60" y="2" width="2" height="20" fill="#000"></rect>
+              <rect x="64" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="67" y="2" width="3" height="20" fill="#000"></rect>
+              <rect x="72" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="75" y="2" width="4" height="20" fill="#000"></rect>
+              <rect x="81" y="2" width="2" height="20" fill="#000"></rect>
+              <rect x="85" y="2" width="1" height="20" fill="#000"></rect>
+              <rect x="88" y="2" width="3" height="20" fill="#000"></rect>
+              <rect x="93" y="2" width="2" height="20" fill="#000"></rect>
+              <!-- Barcode Number text -->
+              <text x="50" y="28" font-size="6" font-family="Courier" text-anchor="middle">TRX-20260803-0001</text>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action buttons for receipt modal -->
+      <div class="receipt-actions">
+        <button class="print-receipt-btn" id="printReceiptBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Cetak Struk (Simulasi)
+        </button>
+        <button class="new-trans-btn" id="newTransBtn">
+          Transaksi Baru
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cashier Logic -->
+  <script src="cashier.js"></script>
+</body>
+</html>

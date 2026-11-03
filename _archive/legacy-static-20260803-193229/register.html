@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Karyawan - Pay & Go</title>
+  <!-- Google Fonts: Poppins (Heading) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <main class="login-wrapper">
+    <div class="login-container">
+      
+      <!-- Brand Logo Header -->
+      <header class="login-header">
+        <div class="logo-container">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2ecc71" />
+                <stop offset="100%" stop-color="#27ae60" />
+              </linearGradient>
+            </defs>
+            <rect x="20" y="30" width="60" height="50" rx="12" fill="url(#greenGrad)" />
+            <path d="M35,30 C35,18 40,12 50,12 C60,12 65,18 65,30" fill="none" stroke="url(#greenGrad)" stroke-width="8" stroke-linecap="round" />
+            <circle cx="50" cy="55" r="10" fill="#ffffff" />
+            <path d="M47,55 L52,60 L60,49" fill="none" stroke="#27ae60" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text">Pay <span class="logo-text-accent">&amp; Go</span></span>
+        </div>
+      </header>
+
+      <!-- Registration Card -->
+      <div class="login-card" id="registerCard">
+        
+        <!-- Form Section -->
+        <div id="formSection">
+          <div class="card-header">
+            <h1>Pendaftaran Karyawan</h1>
+            <p>Lengkapi data diri Anda untuk mengajukan akun baru</p>
+          </div>
+
+          <!-- Form Register -->
+          <form class="login-form" id="registerForm" novalidate>
+            
+            <!-- Input Nama Lengkap -->
+            <div class="input-group">
+              <label for="regName">Nama Lengkap</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input 
+                  type="text" 
+                  id="regName" 
+                  name="regName" 
+                  placeholder="Masukkan nama lengkap Anda" 
+                  required
+                >
+              </div>
+              <span class="field-error" id="nameError">Nama Lengkap harus diisi</span>
+            </div>
+
+            <!-- Input Jabatan -->
+            <div class="input-group">
+              <label for="regPosition">Jabatan</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <input 
+                  type="text" 
+                  id="regPosition" 
+                  name="regPosition" 
+                  placeholder="Contoh: Staff Gudang, Kasir, Supervisor" 
+                  required
+                >
+              </div>
+              <span class="field-error" id="positionError">Jabatan harus diisi</span>
+            </div>
+
+            <!-- Input Email -->
+            <div class="input-group">
+              <label for="regEmail">Email Karyawan</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input 
+                  type="email" 
+                  id="regEmail" 
+                  name="regEmail" 
+                  placeholder="Contoh: nama@domain.com" 
+                  required
+                >
+              </div>
+              <span class="field-error" id="emailError">Email harus diisi dengan format valid</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span class="btn-text">Daftar Sekarang</span>
+              <div class="spinner-container hidden" id="btnSpinner">
+                <svg class="spinner" viewBox="0 0 50 50">
+                  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                </svg>
+              </div>
+            </button>
+          </form>
+
+          <!-- Footer -->
+          <footer class="card-footer">
+            <p>Sudah memiliki akun? <a href="index.html" class="register-link">Masuk di sini</a></p>
+          </footer>
+        </div>
+
+        <!-- Pending Status Section (Hidden by default) -->
+        <div id="pendingSection" class="hidden">
+          <div class="pending-card">
+            
+            <!-- Pending SVG Icon (Clock/Timer themed with fresh green colors) -->
+            <div class="pending-icon-wrapper">
+              <svg class="pending-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="hsl(142, 70%, 45%)" stroke-width="6" />
+                <path d="M50,20 L50,52 L72,52" fill="none" stroke="hsl(142, 70%, 45%)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="50" cy="50" r="4" fill="hsl(142, 70%, 45%)" />
+              </svg>
+            </div>
+
+            <h2>Pendaftaran Dikirim!</h2>
+            
+            <!-- Status Badge -->
+            <div class="status-badge">Menunggu Verifikasi Admin</div>
+            
+            <!-- Information Texts -->
+            <div class="pending-details">
+              <p class="desc-main">Data pendaftaran Anda telah berhasil disimpan di sistem dan saat ini sedang dalam proses peninjauan.</p>
+              
+              <div class="info-alert-box">
+                <svg class="info-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <p><strong>Nomor Karyawan</strong> dan <strong>Password</strong> Anda akan dikirimkan otomatis melalui email pendaftaran setelah disetujui oleh Admin.</p>
+              </div>
+            </div>
+
+            <!-- Back to Login Button -->
+            <a href="index.html" class="back-to-login-btn">
+              Kembali ke Login
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="register.js"></script>
+</body>
+</html>
